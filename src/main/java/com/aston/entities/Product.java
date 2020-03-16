@@ -1,4 +1,4 @@
-package com.aston;
+package com.aston.entities;
 
 import java.io.Serializable;
 
