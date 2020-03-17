@@ -37,7 +37,8 @@ public class ProductController {
 	}
 	
 	@RequestMapping(value = "/delete", method = RequestMethod.GET)
-	public String delete(Long id, int page, int size, String keyword) {
+	public String delete(Long id, int page, int size, 
+			@RequestParam(name = "mc", defaultValue = "") String keyword) {
 		productRepository.deleteById(id);
 		return "redirect:/index?page=" + page + "&size=" + size + "&mc=" + keyword;
 	}
