@@ -22,9 +22,13 @@ public class ProductController {
 			@RequestParam(name = "page", defaultValue = "0")  int p, 
 			@RequestParam(name = "size", defaultValue = "5") int s) {
 		
-		Page<Product> pageProduits = productRepository.findAll(PageRequest.of(p, s));
+		Page<Product> pageProducts = productRepository.findAll(PageRequest.of(p, s));
 		
-		model.addAttribute("listProduits", pageProduits.getContent());
+		model.addAttribute("listProduits", pageProducts.getContent());
+		int[] pages = new int[pageProducts.getTotalPages()];
+		model.addAttribute("pages", pages);
+		model.addAttribute("size", s);
+		model.addAttribute("pageCourante", p);
 		return "produits";
 	}
 }

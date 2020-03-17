@@ -9,7 +9,8 @@
 </head>
 <body>
 	<h3>Liste des produits</h3>
-	<div class="container">
+	
+	<section class="container">
 		<table class="table">
 			<thead>
 				<tr>
@@ -25,6 +26,14 @@
 				</tr>
 			</tbody>
 		</table>
-	</div>
+	</section>
+	
+	<nav class="container">
+		<ul class="nav nav-pills">
+			<li class="nav-item" th:each="p, status:${pages}">
+				<a th:class="${pageCourante}==${status.index}?'nav-link active':'nav-link'" th:href="@{index(page=${status.index}, size=${size})}" th:text="${status.index}"></a>
+			</li>
+		</ul>
+	</nav>
 </body>
 </html>
