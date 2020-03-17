@@ -31,6 +31,7 @@
 					<td th:text="${p.description}"></td>
 					<td th:text="${p.price}"></td>
 					<td th:text="${p.quantity}"></td>
+					<td><a th:href="@{ delete( id=${p.id}, page=${pageCourante}, size=${size}, mc=${mc} ) }">Delete</a></td>
 				</tr>
 			</tbody>
 		</table>
@@ -39,7 +40,7 @@
 	<nav class="container">
 		<ul class="nav nav-pills">
 			<li class="nav-item" th:each="p, status:${pages}">
-				<a th:class="${pageCourante}==${status.index}?'nav-link active':'nav-link'" th:href="@{index(page=${status.index}, size=${size}, mc=${mc})}" th:text="${status.index}"></a>
+				<a th:class="${pageCourante}==${status.index}?'nav-link active':'nav-link'" th:href="@{ index( page=${status.index}, size=${size}, mc=${mc} ) }" th:text="${status.index}"></a>
 			</li>
 		</ul>
 	</nav>
