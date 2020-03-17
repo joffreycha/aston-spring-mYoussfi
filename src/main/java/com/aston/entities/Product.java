@@ -6,10 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
-@Data @NoArgsConstructor @Entity
+@Entity
 public class Product implements Serializable {
 
 	/**
@@ -23,12 +20,49 @@ public class Product implements Serializable {
 	private double price;
 	private int quantity;
 	
+	
+	public Product() {
+	}
+
 	public Product(String description, double price, int quantity) {
-		super();
 		this.description = description;
 		this.price = price;
 		this.quantity = quantity;
 	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	public double getPrice() {
+		return price;
+	}
+
+	public void setPrice(double price) {
+		this.price = price;
+	}
+
+	public int getQuantity() {
+		return quantity;
+	}
+
+	public void setQuantity(int quantity) {
+		this.quantity = quantity;
+	}
+	
+	
 	
 	
 }
