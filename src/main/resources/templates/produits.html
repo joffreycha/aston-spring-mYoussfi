@@ -8,16 +8,16 @@
  />
 </head>
 <body>
-	<h3>Liste des produits</h3>
-	
 	<section class="container">
 		<form th:action="@{index}" method="get">
 			<label for="psearch">Mot clé :</label>
-			<input type="search" id="psearch" name="mc"/>
+			<input type="search" id="psearch" name="mc" th:value="${mc}"/>
 			<button class="btn btn-primary">Chercher</button>
 		</form>
 	</section>
 	
+	<h3>Liste des produits</h3>
+
 	<section class="container">
 		<table class="table">
 			<thead>
@@ -39,7 +39,7 @@
 	<nav class="container">
 		<ul class="nav nav-pills">
 			<li class="nav-item" th:each="p, status:${pages}">
-				<a th:class="${pageCourante}==${status.index}?'nav-link active':'nav-link'" th:href="@{index(page=${status.index}, size=${size})}" th:text="${status.index}"></a>
+				<a th:class="${pageCourante}==${status.index}?'nav-link active':'nav-link'" th:href="@{index(page=${status.index}, size=${size}, mc=${mc})}" th:text="${status.index}"></a>
 			</li>
 		</ul>
 	</nav>

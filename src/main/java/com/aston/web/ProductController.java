@@ -20,19 +20,18 @@ public class ProductController {
 	@RequestMapping(value = "/index")
 	public String index(Model model, 
 			@RequestParam(name = "page", defaultValue = "0")  int p, 
-			@RequestParam(name = "size", defaultValue = "5") int s)
-//			@RequestParam(name = "motCle", defaultValue = "") String keyword)
+			@RequestParam(name = "size", defaultValue = "5") int s,
+			@RequestParam(name = "mc", defaultValue = "") String keyword)
 	{
 		
-		//Page<Product> pageProducts = productRepository.search("%" + keyword + "%", PageRequest.of(p, s));
-		Page<Product> pageProducts = productRepository.findAll(PageRequest.of(p, s));
+		Page<Product> pageProducts = productRepository.search("%" + keyword + "%", PageRequest.of(p, s));
 		
 		model.addAttribute("listProduits", pageProducts.getContent());
 		int[] pages = new int[pageProducts.getTotalPages()];
 		model.addAttribute("pages", pages);
 		model.addAttribute("size", s);
 		model.addAttribute("pageCourante", p);
-		//model.addAttribute("mc", keyword);
+		model.addAttribute("mc", keyword);
 		return "produits";
 	}
 }
