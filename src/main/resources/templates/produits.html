@@ -11,6 +11,14 @@
 	<h3>Liste des produits</h3>
 	
 	<section class="container">
+		<form th:action="@{index}" method="get">
+			<label for="psearch">Mot clé :</label>
+			<input type="search" id="psearch" name="mc"/>
+			<button class="btn btn-primary">Chercher</button>
+		</form>
+	</section>
+	
+	<section class="container">
 		<table class="table">
 			<thead>
 				<tr>
